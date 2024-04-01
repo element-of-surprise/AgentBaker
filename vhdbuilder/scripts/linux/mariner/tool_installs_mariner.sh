@@ -179,11 +179,6 @@ installFIPS() {
     echo "azl-compliance completed with exit code '$?'"
     echo "Done setting up FIPS and FedRAMP compliance."
 
-    echo "TOBIASB: After, getting information about /tmp"
-    stat /tmp
-    ls -lahhF /tmp
-    echo "TOBIASB: Done getting information about /tmp"
-
     echo "TOBIASB: dumping all fedramp data"
     set +x
     for file in /etc/azl-compliance/fedramp/fail.txt /etc/azl-compliance/fedramp/failure_details.txt /etc/azl-compliance/fedramp/success.txt /etc/azl-compliance/fedramp/apply_logs/*; do
