@@ -164,11 +164,6 @@ installFIPS() {
     set -x
     echo "TOBIASB START"
 
-    echo "TOBIASB: Before, getting information about /tmp"
-    stat /tmp
-    ls -lahhF /tmp
-    echo "TOBIASB: Done getting information about /tmp"
-
     # TOBIASB: TODO: Hacky install from blob storage to test.
 
     echo "Installing azl-compliance package for FIPS and FedRAMP..."
@@ -208,6 +203,16 @@ installFIPS() {
     #     fi
     # fi
 
-    echo "TOBIASB END"
-    set +x
+    # if the fail file exists and is not empty, exit with error
+    if [ -s /etc/azl-compliance/fedramp/fail.txt ]; then
+        echo "TOBIASB: FIPS and FedRAMP compliance failed. Exiting with error."
+        echo "TOBIASB END"
+        set +x
+        return 1
+    else
+        echo "TOBIASB: FIPS and FedRAMP compliance succeeded."
+        echo "TOBIASB END"
+        set +x
+        return 0
+    fi
 }
