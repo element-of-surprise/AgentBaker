@@ -82,6 +82,36 @@
       ]
     },
     {
+      "downloadURL": "mcr.microsoft.com/containernetworking/azure-cni:*",
+      "amd64OnlyVersions": [],
+      "multiArchVersions": [
+        "v1.5.26"
+      ],
+      "prefetchOptimizations": [
+        {
+          "version": "v1.5.26",
+          "binaries": [
+            "dropgz"
+          ]
+        }
+      ]
+    },
+    {
+      "downloadURL": "mcr.microsoft.com/containernetworking/azure-ipam:*",
+      "amd64OnlyVersions": [],
+      "multiArchVersions": [
+        "v0.2.0"
+      ],
+      "prefetchOptimizations": [
+        {
+          "version": "v0.2.0",
+          "binaries": [
+            "dropgz"
+          ]
+        }
+      ]
+    },
+    {
       "downloadURL": "mcr.microsoft.com/containernetworking/azure-npm:*",
       "amd64OnlyVersions": [],
       "multiArchVersions": [
