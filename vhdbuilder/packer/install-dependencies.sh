@@ -204,7 +204,7 @@ installAndConfigureArtifactStreaming() {
   if [ "$2" == "deb" ]; then
     apt_get_install 30 1 600 $MIRROR_DOWNLOAD_PATH || exit $ERR_ARTIFACT_STREAMING_DOWNLOAD
   elif [ "$2" == "rpm" ]; then
-    dnf_install 30 1 600 $MIRROR_DOWNLOAD_PATH || exit $ERR_ARTIFACT_STREAMING_DOWNLOAD
+    dnf_install 30 1 600 --nogpgcheck $MIRROR_DOWNLOAD_PATH || exit $ERR_ARTIFACT_STREAMING_DOWNLOAD
   fi
   rm $MIRROR_DOWNLOAD_PATH
 }
