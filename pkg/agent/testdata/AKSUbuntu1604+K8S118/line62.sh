@@ -43,12 +43,11 @@ installDeps() {
     fi
 
     pkg_list+=(blobfuse2=${BLOBFUSE2_VERSION})
-    if [[ $(isARM64) != 1 ]]; then
-        if [[ "${OSVERSION}" == "22.04" ]]; then
-            pkg_list+=(fuse3)
-        else
-            pkg_list+=(blobfuse=${BLOBFUSE_VERSION} fuse)
-        fi
+
+    if [[ "${OSVERSION}" == "22.04" ]]; then
+        pkg_list+=(fuse3)
+    else
+        pkg_list+=(blobfuse=${BLOBFUSE_VERSION} fuse)
     fi
 
     for apt_package in ${pkg_list[*]}; do

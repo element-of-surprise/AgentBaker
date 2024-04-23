@@ -7430,15 +7430,14 @@ installDeps() {
     fi
 
     pkg_list+=(blobfuse2=${BLOBFUSE2_VERSION})
-    if [[ $(isARM64) != 1 ]]; then
-        # blobfuse2 is installed for all ubuntu versions, it is included in pkg_list
-        # for 22.04, fuse3 is installed. for all others, fuse is installed
-        # for 16.04, installed blobfuse1.3.7, for all others except 22.04, installed blobfuse1.4.5
-        if [[ "${OSVERSION}" == "22.04" ]]; then
-            pkg_list+=(fuse3)
-        else
-            pkg_list+=(blobfuse=${BLOBFUSE_VERSION} fuse)
-        fi
+
+    # blobfuse2 is installed for all ubuntu versions, it is included in pkg_list
+    # for 22.04, fuse3 is installed. for all others, fuse is installed
+    # for 16.04, installed blobfuse1.3.7, for all others except 22.04, installed blobfuse1.4.5
+    if [[ "${OSVERSION}" == "22.04" ]]; then
+        pkg_list+=(fuse3)
+    else
+        pkg_list+=(blobfuse=${BLOBFUSE_VERSION} fuse)
     fi
 
     for apt_package in ${pkg_list[*]}; do
